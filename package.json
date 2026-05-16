@@ -1,0 +1,44 @@
+{
+  "name": "virtual-office",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.34.1",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "build": "pnpm -r build",
+    "typecheck": "pnpm -r typecheck",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "pnpm -r test",
+    "verify": "bash scripts/verify.sh",
+    "dev": "pnpm --parallel --filter @vo/server --filter @vo/web dev",
+    "seed": "pnpm --filter @vo/server seed",
+    "db:up": "docker compose up -d",
+    "db:down": "docker compose down",
+    "start": "echo \"Run: pnpm db:up && pnpm --filter @vo/server db:migrate && pnpm seed && pnpm dev\"",
+    "dev:restart": "bash scripts/dev-restart.sh",
+    "dev:stop": "bash scripts/dev-restart.sh --stop",
+    "e2e:clean": "bash scripts/e2e-clean.sh"
+  },
+  "pnpm": {
+    "comment": "Lifecycle scripts are blocked by default (CLAUDE.md \u00a735). Only packages listed in onlyBuiltDependencies may run them. esbuild postinstall fetches its platform binary and is required by tsx, drizzle-kit and vitest. The override lifts drizzle-kit transitive dep off a vulnerable esbuild (GHSA-67mh-4wv8-2f99).",
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ],
+    "overrides": {
+      "esbuild": ">=0.25.12"
+    }
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@playwright/test": "1.62.1",
+    "eslint": "10.9.1",
+    "eslint-config-prettier": "10.1.8",
+    "prettier": "3.9.6",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.68.0"
+  }
+}

@@ -1,0 +1,23 @@
+node_modules/
+dist/
+build/
+.next/
+out/
+*.tsbuildinfo
+
+# Secrets — never commit
+.env
+.env.*
+!.env.example
+
+# Local data
+*.log
+coverage/
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Test artifacts
+playwright-report/
+test-results/
