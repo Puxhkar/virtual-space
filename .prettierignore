@@ -1,0 +1,8 @@
+pnpm-lock.yaml
+dist/
+.next/
+node_modules/
+
+# Published artifact — contains pre-formatted ASCII diagrams that
+# reformatting would corrupt.
+plan.html
