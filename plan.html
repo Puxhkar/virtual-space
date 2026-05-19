@@ -1,0 +1,1164 @@
+<title>Virtual Office Build Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+:root{
+  --paper:#f6f5f2;
+  --surface:#ffffff;
+  --surface-2:#faf9f6;
+  --ink:#191b1c;
+  --ink-2:#3d4244;
+  --muted:#6f7578;
+  --line:#e0ddd6;
+  --line-soft:#ecebe5;
+  --core:#0d5c63;
+  --core-soft:#e2eef0;
+  --signal:#b06b12;
+  --signal-soft:#f7ecdb;
+  --panel:#14181a;
+  --panel-ink:#d6dcdd;
+  --panel-line:#2c3437;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#101314;
+    --surface:#181c1e;
+    --surface-2:#1d2224;
+    --ink:#e9eaea;
+    --ink-2:#c0c6c7;
+    --muted:#8b9294;
+    --line:#2b3134;
+    --line-soft:#232829;
+    --core:#5ec3c9;
+    --core-soft:#152b2e;
+    --signal:#e0a04e;
+    --signal-soft:#2e2314;
+    --panel:#0b0e0f;
+    --panel-ink:#cdd4d5;
+    --panel-line:#242b2d;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#101314;
+  --surface:#181c1e;
+  --surface-2:#1d2224;
+  --ink:#e9eaea;
+  --ink-2:#c0c6c7;
+  --muted:#8b9294;
+  --line:#2b3134;
+  --line-soft:#232829;
+  --core:#5ec3c9;
+  --core-soft:#152b2e;
+  --signal:#e0a04e;
+  --signal-soft:#2e2314;
+  --panel:#0b0e0f;
+  --panel-ink:#cdd4d5;
+  --panel-line:#242b2d;
+}
+
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Source Serif 4",Georgia,serif;
+  font-size:16.5px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1020px;margin:0 auto;padding:0 24px 96px;}
+
+/* ---------- type ---------- */
+h1,h2,h3,h4,.sans{font-family:Archivo,"Helvetica Neue",Arial,sans-serif;}
+h1{font-size:clamp(30px,5vw,46px);line-height:1.06;letter-spacing:-.028em;font-weight:700;margin:0;text-wrap:balance;}
+h2{font-size:clamp(21px,2.6vw,26px);line-height:1.18;letter-spacing:-.017em;font-weight:600;margin:0;text-wrap:balance;}
+h3{font-size:17px;line-height:1.3;letter-spacing:-.01em;font-weight:600;margin:0;}
+p{margin:0;max-width:68ch;}
+a{color:var(--core);}
+.mono{font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;}
+.eyebrow{
+  font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:500;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+}
+code{
+  font-family:"IBM Plex Mono",monospace;font-size:.86em;
+  background:var(--surface-2);border:1px solid var(--line-soft);
+  padding:1px 5px;border-radius:4px;color:var(--ink-2);
+}
+
+/* ---------- header ---------- */
+.masthead{position:relative;overflow:hidden;border-bottom:1px solid var(--line);margin-bottom:56px;}
+.masthead-inner{position:relative;max-width:1020px;margin:0 auto;padding:72px 24px 44px;}
+.rings{position:absolute;top:-140px;right:-120px;width:520px;height:520px;pointer-events:none;opacity:.5;}
+.rings circle{fill:none;stroke:var(--core);}
+.masthead .lede{margin-top:20px;font-size:19px;line-height:1.55;color:var(--ink-2);max-width:60ch;}
+.rev{
+  display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--signal);
+  border:1px solid var(--signal);border-radius:3px;padding:3px 8px;margin-bottom:20px;
+}
+.facts{
+  display:flex;flex-wrap:wrap;gap:0;margin-top:34px;
+  border-top:1px solid var(--line);
+}
+.fact{
+  flex:1 1 170px;padding:16px 20px 4px 0;border-right:1px solid var(--line-soft);
+  padding-right:20px;margin-right:20px;
+}
+.fact:last-child{border-right:none;}
+.fact dt{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 4px;}
+.fact dd{margin:0;font-family:Archivo,sans-serif;font-weight:600;font-size:15px;letter-spacing:-.01em;}
+
+/* ---------- sections ---------- */
+section{margin-bottom:64px;}
+.sec-head{display:flex;align-items:baseline;gap:14px;padding-bottom:12px;border-bottom:2px solid var(--ink);margin-bottom:26px;}
+.sec-head .eyebrow{white-space:nowrap;}
+.stack{display:flex;flex-direction:column;gap:16px;}
+
+/* ---------- changelog ---------- */
+.changelog{display:flex;flex-direction:column;gap:0;border:1px solid var(--line);border-radius:8px;background:var(--surface);overflow:hidden;}
+.change{display:grid;grid-template-columns:78px 1fr;gap:20px;padding:18px 22px;border-bottom:1px solid var(--line-soft);}
+.change:last-child{border-bottom:none;}
+.tag{
+  font-family:"IBM Plex Mono",monospace;font-size:10px;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;padding:3px 0;height:fit-content;
+}
+.tag.add{color:var(--signal);}
+.tag.fix{color:var(--core);}
+.change h3{margin-bottom:3px;}
+.change p{font-size:15px;color:var(--ink-2);}
+
+/* ---------- decisions ---------- */
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--surface);}
+table{border-collapse:collapse;width:100%;min-width:660px;font-size:14.5px;}
+th{
+  font-family:"IBM Plex Mono",monospace;font-size:10.5px;font-weight:600;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--muted);text-align:left;
+  padding:14px 18px;border-bottom:1px solid var(--line);white-space:nowrap;
+}
+td{padding:15px 18px;border-bottom:1px solid var(--line-soft);vertical-align:top;color:var(--ink-2);}
+tr:last-child td{border-bottom:none;}
+td:first-child{font-family:Archivo,sans-serif;font-weight:600;color:var(--ink);white-space:nowrap;}
+td strong{color:var(--ink);font-family:Archivo,sans-serif;font-weight:600;}
+
+/* ---------- diagram ---------- */
+.diagram{
+  background:var(--panel);color:var(--panel-ink);border:1px solid var(--panel-line);
+  border-radius:8px;padding:26px 22px;overflow-x:auto;
+  font-family:"IBM Plex Mono",monospace;font-size:12.5px;line-height:1.5;white-space:pre;
+}
+
+/* ---------- phases ---------- */
+.phase{
+  background:var(--surface);border:1px solid var(--line);border-radius:8px;
+  padding:22px 24px;display:grid;grid-template-columns:58px 1fr;gap:22px;
+}
+.phase.b{border-left:3px solid var(--signal);}
+.phase.a{border-left:3px solid var(--core);}
+.idx{display:flex;flex-direction:column;gap:7px;}
+.idx .n{
+  font-family:"IBM Plex Mono",monospace;font-size:22px;font-weight:600;
+  letter-spacing:-.02em;color:var(--ink);line-height:1;font-variant-numeric:tabular-nums;
+}
+.idx .dur{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--muted);line-height:1.3;}
+.phase-top{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:5px;}
+.chip{
+  font-family:"IBM Plex Mono",monospace;font-size:9.5px;font-weight:600;letter-spacing:.11em;
+  text-transform:uppercase;padding:2.5px 7px;border-radius:3px;
+}
+.chip.rev{background:var(--core-soft);color:var(--core);border:none;margin:0;display:inline-block;}
+.chip.new{background:var(--signal-soft);color:var(--signal);}
+.purpose{font-size:15px;color:var(--muted);margin-bottom:14px;}
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 30px;}
+.col strong{
+  display:block;font-family:Archivo,sans-serif;font-size:12px;font-weight:600;
+  letter-spacing:.02em;color:var(--ink);margin-bottom:6px;
+}
+ul{margin:0;padding-left:17px;list-style:none;}
+li{position:relative;margin:3px 0;font-family:Archivo,sans-serif;font-size:14px;line-height:1.5;color:var(--ink-2);}
+li::before{content:"";position:absolute;left:-13px;top:.62em;width:4px;height:1px;background:var(--muted);}
+.note{
+  margin-top:14px;padding:12px 15px;border-radius:6px;background:var(--surface-2);
+  border:1px solid var(--line-soft);font-size:14.5px;color:var(--ink-2);
+}
+.note strong{font-family:Archivo,sans-serif;font-weight:600;color:var(--ink);}
+.note.core{background:var(--core-soft);border-color:transparent;}
+.note.signal{background:var(--signal-soft);border-color:transparent;}
+
+/* ---------- track banner ---------- */
+.track{
+  display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;
+  padding:20px 24px;border-radius:8px;margin-bottom:18px;
+}
+.track.a{background:var(--core-soft);}
+.track.b{background:var(--signal-soft);}
+.track h2{flex:0 0 auto;}
+.track p{font-size:15px;color:var(--ink-2);}
+
+/* ---------- grid lists ---------- */
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:12px;}
+.tile{
+  background:var(--surface);border:1px solid var(--line);border-radius:7px;padding:15px 17px;
+}
+.tile h3{font-size:14.5px;margin-bottom:5px;}
+.tile p{font-size:13.5px;color:var(--muted);line-height:1.5;}
+.tile .eyebrow{display:block;margin-bottom:8px;font-size:10px;}
+
+.excluded{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:2px 26px;}
+.excluded div{
+  font-family:Archivo,sans-serif;font-size:14px;color:var(--muted);
+  padding:6px 0;border-bottom:1px solid var(--line-soft);
+}
+
+.order{
+  counter-reset:step;display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1px 28px;
+}
+.order div{
+  counter-increment:step;position:relative;padding:7px 0 7px 34px;
+  font-family:Archivo,sans-serif;font-size:14px;border-bottom:1px solid var(--line-soft);color:var(--ink-2);
+}
+.order div::before{
+  content:counter(step,decimal-leading-zero);position:absolute;left:0;top:8px;
+  font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--muted);font-variant-numeric:tabular-nums;
+}
+.order div.b{color:var(--signal);}
+
+footer{
+  border-top:1px solid var(--line);padding-top:22px;
+  font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.05em;
+  color:var(--muted);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+}
+
+:focus-visible{outline:2px solid var(--core);outline-offset:2px;}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
+@media (max-width:720px){
+  body{font-size:16px;}
+  .masthead-inner{padding:52px 24px 36px;}
+  .cols,.tiles,.excluded,.order{grid-template-columns:1fr;}
+  .phase{grid-template-columns:1fr;gap:14px;}
+  .idx{flex-direction:row;align-items:baseline;gap:12px;}
+  .change{grid-template-columns:1fr;gap:6px;}
+  .fact{border-right:none;flex:1 1 100%;margin-right:0;}
+  .rings{opacity:.25;}
+}
+</style>
+
+<header class="masthead">
+  <svg class="rings" viewBox="0 0 520 520" aria-hidden="true">
+    <circle cx="260" cy="260" r="60"  stroke-width="1.2" opacity=".85"/>
+    <circle cx="260" cy="260" r="112" stroke-width="1"   opacity=".6"/>
+    <circle cx="260" cy="260" r="168" stroke-width="1"   opacity=".4"/>
+    <circle cx="260" cy="260" r="228" stroke-width="1"   opacity=".26"/>
+    <circle cx="260" cy="260" r="292" stroke-width="1"   opacity=".14"/>
+    <circle cx="260" cy="260" r="7" fill="var(--core)" stroke="none" opacity=".8"/>
+  </svg>
+  <div class="masthead-inner">
+    <span class="rev">Revision 3 &middot; 28 Aug 2026</span>
+    <h1>Virtual Office — Build Plan</h1>
+    <p class="lede">A spatial workspace for remote teams. Track&nbsp;A builds the office your own team uses every morning. Track&nbsp;B builds the product other teams pay for.</p>
+    <dl class="facts">
+      <div class="fact"><dt>Track A — core</dt><dd>5–7 weeks solo + AI</dd></div>
+      <div class="fact"><dt>Track B — sellable</dt><dd>6–9 weeks after A</dd></div>
+      <div class="fact"><dt>First target</dt><dd>10–20 users, one org</dd></div>
+      <div class="fact"><dt>Renderer</dt><dd>2D canvas, no 3D</dd></div>
+    </dl>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section>
+  <div class="sec-head"><span class="eyebrow">01</span><h2>Revision history</h2></div>
+  <div class="changelog">
+    <div class="change">
+      <span class="tag fix">R3</span>
+      <div>
+        <h3>Redis deferred — realtime state goes in memory, behind an interface</h3>
+        <p>The engineering guidelines rule against introducing Redis for scalability alone, and they are right: with one Node process and ten users a <code>Map</code> is simpler, faster and one less service to secure. Phase 06 now defines a <code>PresenceStore</code> interface with an in-memory implementation. Redis becomes a second implementation of the same interface on the day a second server instance exists.</p>
+      </div>
+    </div>
+    <div class="change">
+      <span class="tag fix">R3</span>
+      <div>
+        <h3>Auth moves to Better Auth, with the org model still in our Postgres</h3>
+        <p>Hand-rolled sessions were the highest-risk part of phase 02. Better Auth's organization plugin generates orgs, members, invitations and roles as tables in our own database — so the tenant boundary and the seat count for billing keep a single source of truth, which a vendor-hosted org model could not offer without a sync gap.</p>
+      </div>
+    </div>
+    <div class="change">
+      <span class="tag fix">R3</span>
+      <div>
+        <h3>Art is Kenney CC0 for V1, loaded through an asset manifest</h3>
+        <p>Prototype on CC0 art with zero licence obligations, buy a better pack once the product is validated. Every asset is referenced through a manifest that carries tile size and frame layout, so swapping a 16×16 free pack for a 32×32 paid one is a manifest edit, not a code change.</p>
+      </div>
+    </div>
+    <div class="change">
+      <span class="tag fix">R2</span>
+      <div>
+        <h3>Multi-tenancy moves into the first schema, not "someday"</h3>
+        <p>Rev 1 built one office and listed multiple organizations as out of scope. Adding <code>organizations</code> above <code>offices</code> now costs half a day. Retrofitting it after auth, Redis keys, socket rooms and LiveKit room names all assume a single office costs weeks. You can still ship one office in the UI.</p>
+      </div>
+    </div>
+    <div class="change">
+      <span class="tag fix">R2</span>
+      <div>
+        <h3>Proximity is selective subscription, not connect/disconnect</h3>
+        <p>Rev 1 said "connect/disconnect based on nearby users" — that is the peer-to-peer mental model and it produces exactly the connection churn Rev 1's own optimization list worried about. With an SFU, nobody ever connects or disconnects. Everyone joins one room and you toggle track subscriptions.</p>
+      </div>
+    </div>
+    <div class="change">
+      <span class="tag fix">R2</span>
+      <div>
+        <h3>The map is data, not code</h3>
+        <p>The office editor stays out of V1, but the map ships as a Tiled JSON document loaded at runtime. If the map lives in Phaser scene files, the editor is a rewrite later. Custom offices are the thing that stops customers churning.</p>
+      </div>
+    </div>
+    <div class="change">
+      <span class="tag add">R2</span>
+      <div>
+        <h3>Track B: chat, recordings, transcription, AI notes, integrations</h3>
+        <p>Proximity video is a feature now, not a product. Phases 17–23 add async chat, recording, AI meeting notes, Calendar / GitHub / Spotify, billing, and SSO — the layer that makes this sellable rather than a demo.</p>
+      </div>
+    </div>
+    <div class="change">
+      <span class="tag add">R2</span>
+      <div>
+        <h3>A recorded decision log and a UI production method</h3>
+        <p>Sections 3 and 7. Every stack choice now carries its reasoning, so the next engineer does not relitigate it, and the UI has a named split between the DOM layer and the canvas layer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="eyebrow">02</span><h2>What done means</h2></div>
+  <div class="stack">
+    <p>Ten real people run their daily standup inside the office, simultaneously, for a full working week — with no crashes, no desync, no broken audio, and nobody dropping to Google Meet as a fallback. That last clause is the honest test.</p>
+    <div class="note core"><strong>Track A gate.</strong> Do not start Track B until Track A has survived five consecutive standups without manual intervention. Shipping chat on top of a flaky presence system just gives you two broken systems.</div>
+    <div class="note signal"><strong>Track B gate.</strong> One team outside your own uses the product for two weeks and would notice if it disappeared. That is the signal that there is something to sell; everything before it is a prototype with good uptime.</div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="eyebrow">03</span><h2>Decisions on record</h2></div>
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr><th>Choice</th><th>Decision</th><th>Why, and what was rejected</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Database</td>
+          <td><strong>PostgreSQL</strong></td>
+          <td>The data is relational to its core: org → office → member → role → seat, and every read is scoped by org and joined through membership. Seat-based billing needs transactional integrity and cross-row uniqueness that a document store cannot enforce. Postgres also gives row-level security as a real multi-tenant safety net, JSONB for map and config documents, and pgvector later for searching meeting notes. <strong>MongoDB rejected</strong> — Gather uses it because it was 2020's default, not because it fits. The one workload Mongo would win is high-frequency transient writes, and those never reach the database at all — they live in the in-memory presence store.</td>
+        </tr>
+        <tr>
+          <td>Media</td>
+          <td><strong>LiveKit Cloud</strong></td>
+          <td>Managed SFU with selective subscription, per-participant volume, simulcast, and egress for recording — every primitive the proximity engine and Track B need. <strong>Own SFU rejected for now</strong>: Gather built theirs in 2020 because nothing like LiveKit existed. Revisit only when per-minute cost becomes a real line item, and treat it as an infrastructure project, not a feature.</td>
+        </tr>
+        <tr>
+          <td>Renderer</td>
+          <td><strong>Phaser 4.2.1</strong></td>
+          <td>Verified against npm at pin time — v4 is the current stable line, not v3 as this plan first said. Its breaking changes are confined to custom WebGL pipelines, filters, <code>BitmapMask</code> and <code>Geom.Point</code>; tilemaps, Arcade physics, sprites, input and cameras are unchanged, which is our entire surface. Tilemaps, collision, camera and sprite animation out of the box, which is most of Track A phase 03. <strong>PixiJS noted as the exit</strong>: if the canvas becomes the product surface and Phaser's game-loop assumptions start fighting you, Pixi is the migration — it is what Gather appears to sit on. Keeping the map as data makes that migration survivable.</td>
+        </tr>
+        <tr>
+          <td>Tenancy</td>
+          <td><strong>Org-scoped from schema&nbsp;one</strong></td>
+          <td>Every table carries <code>org_id</code>, and every socket room, presence-store key and LiveKit room name is namespaced by it. Costs half a day now; costs a rewrite later.</td>
+        </tr>
+        <tr>
+          <td>Auth</td>
+          <td><strong>Better Auth</strong></td>
+          <td>Its organization plugin generates orgs, members, invitations and roles <em>as tables in our Postgres</em>, with server APIs and a typed client. That keeps the tenant boundary and the billing seat count on one source of truth. <strong>Clerk and WorkOS rejected for now</strong> — both hold the org model on their side, which means mirroring it into Postgres and accepting a sync gap on a hard security boundary. <strong>Hand-rolled rejected</strong>: sessions, rotation and reset are where custom auth quietly goes wrong. Trade-off accepted: no hosted SAML, so phase 23 adds WorkOS purely as an SSO layer in front. Better Auth writes no audit trail — we build that ourselves.</td>
+        </tr>
+        <tr>
+          <td>Realtime state</td>
+          <td><strong>In-memory, behind an interface</strong></td>
+          <td>One Node process and ten users does not need a second datastore. A <code>PresenceStore</code> interface holds positions, sockets and heartbeats in a <code>Map</code>; <strong>Redis is deferred</strong> to a second implementation of that same interface, added the day a second server instance exists and Socket.IO needs a cross-process adapter. State is lost on restart by design — clients resync on reconnect, and phase 15 tests exactly that.</td>
+        </tr>
+        <tr>
+          <td>Art</td>
+          <td><strong>Kenney CC0, then paid</strong></td>
+          <td>Public-domain art carries no attribution or share-alike obligation, so V1 prototypes with zero licence surface. Every asset resolves through a manifest carrying tile size and frame layout, making the later swap to a richer 32×32 pack a manifest edit. <strong>LPC rejected</strong> — CC-BY-SA is copyleft on derived sprite sheets, and its wardrobe is medieval rather than modern office.</td>
+        </tr>
+        <tr>
+          <td>Language</td>
+          <td><strong>TypeScript, end to end</strong></td>
+          <td>One package of shared types for realtime events, API payloads and DB models, validated at both edges with Zod. Realtime bugs are mostly contract bugs.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="eyebrow">04</span><h2>Architecture</h2></div>
+  <div class="diagram">                          BROWSER
+        ┌──────────────────────┴───────────────────────┐
+        │                                              │
+   DOM LAYER                                     CANVAS LAYER
+   Next.js 16 · React 19 · shadcn/ui             Phaser 4
+   auth · rosters · chat · controls              map · avatars · zones
+        │                                              │
+        └──────────────────────┬───────────────────────┘
+                               │
+       ┌───────────────────────┼───────────────────────┐
+       ▼                       ▼                       ▼
+   REST / tRPC             Socket.IO               LiveKit SDK
+   orgs · offices          movement                autoSubscribe:false
+   members · chat          presence · zones        setSubscribed()
+                                                   setVolume()
+       │                       │                       │
+       └───────────┬───────────┘                       │
+                   ▼                                   ▼
+      ┌──────────────────────────┐            ┌──────────────────┐
+      │   Node + TypeScript      │  tokens    │  LiveKit Cloud   │
+      │   API · WS gateway       │ ─────────▶ │  SFU             │
+      │   workers · webhooks     │            │                  │
+      └──────────────────────────┘            └────────┬─────────┘
+            │              │                           │ egress
+            ▼              ▼                           ▼
+     ┌─────────────┐  ┌──────────────┐        ┌──────────────────┐
+     │ PostgreSQL  │  │ PresenceStore│        │  S3 · recordings │
+     │ org-scoped  │  │  sockets     │        │       │          │
+     │ JSONB maps  │  │  positions   │        │       ▼          │
+     │ Better Auth │  │  presence    │        │  STT ─▶ AI notes │
+     └─────────────┘  └──────────────┘        └──────────────────┘
+      source of truth   in-memory Map           TRACK B
+                        └─ Redis impl swaps in
+                           at 2+ instances</div>
+</section>
+
+<div class="track a">
+  <h2>Track A — the office</h2>
+  <p>Phases 00–16. Ends when your own team lives in it.</p>
+</div>
+
+<section>
+  <div class="stack">
+
+    <article class="phase a">
+      <div class="idx"><span class="n">00</span><span class="dur">1 day</span></div>
+      <div>
+        <div class="phase-top"><h3>Thesis and scope freeze</h3></div>
+        <p class="purpose">Write down what this is before writing code that assumes it.</p>
+        <div class="cols">
+          <div class="col"><strong>Fix in writing</strong><ul>
+            <li>Who opens this at 9am, and why</li>
+            <li>What it replaces — Meet, Slack huddles, nothing</li>
+            <li>One org, one office, 10–20 people</li>
+            <li>Open floor, desks, one standup room</li>
+            <li>The five events that must never break</li>
+          </ul></div>
+          <div class="col"><strong>Produce</strong><ul>
+            <li>Realtime event catalogue</li>
+            <li>REST endpoint list</li>
+            <li>ERD including <code>organizations</code></li>
+            <li>Acceptance criteria per phase</li>
+          </ul></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="phase a">
+      <div class="idx"><span class="n">01</span><span class="dur">1–2 days</span></div>
+      <div>
+        <div class="phase-top"><h3>Repo and engineering foundation</h3></div>
+        <p class="purpose">Structure and conventions, once, so nothing later argues about them.</p>
+        <div class="cols">
+          <div class="col"><strong>Setup</strong><ul>
+            <li>Monorepo — <code>web</code>, <code>server</code>, <code>shared</code></li>
+            <li>TypeScript strict everywhere</li>
+            <li>ESLint, Prettier, pre-commit</li>
+            <li>Env schema validated at boot</li>
+            <li>dev / staging / prod configs</li>
+          </ul></div>
+          <div class="col"><strong>Shared contracts</strong><ul>
+            <li>Zod schemas for every socket event</li>
+            <li>Org, user, membership, position types</li>
+            <li>Presence and zone enums</li>
+            <li>API response envelope</li>
+            <li>One import path for both sides</li>
+          </ul></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="phase a">
+      <div class="idx"><span class="n">02</span><span class="dur">4–6 days</span></div>
+      <div>
+        <div class="phase-top"><h3>Multi-tenant data model and auth</h3><span class="chip rev">Revised</span></div>
+        <p class="purpose">Identity, organizations and membership — the layer everything else scopes to.</p>
+        <div class="cols">
+          <div class="col"><strong>Schema</strong><ul>
+            <li><code>organizations</code></li>
+            <li><code>users</code> — global identity</li>
+            <li><code>memberships</code> — org_id, user_id, role</li>
+            <li><code>offices</code> — org_id, map_id</li>
+            <li><code>office_members</code>, <code>zones</code></li>
+            <li><code>maps</code> — JSONB, versioned</li>
+            <li><code>users</code>, <code>sessions</code>, <code>invites</code> from Better Auth</li>
+            <li><code>audit_log</code> — ours, not generated</li>
+          </ul></div>
+          <div class="col"><strong>Auth and isolation</strong><ul>
+            <li>Better Auth + organization plugin</li>
+            <li>Generated schema reviewed, not blindly adopted</li>
+            <li>Email + Google, magic link optional</li>
+            <li>Session carries <code>org_id</code> and role</li>
+            <li>Every query filtered by org — no exceptions</li>
+            <li>Row-level security as the backstop</li>
+            <li>Invite flow from the plugin, roles ours</li>
+            <li>Own audit log — the plugin writes none</li>
+          </ul></div>
+        </div>
+        <div class="note core"><strong>Test that proves it:</strong> seed two organizations, authenticate as a member of A, and confirm every endpoint and socket event returns nothing from B. Write it now; it will catch a leak later.</div>
+      </div>
+    </article>
+
+    <article class="phase a">
+      <div class="idx"><span class="n">03</span><span class="dur">4–6 days</span></div>
+      <div>
+        <div class="phase-top"><h3>2D world, map as data</h3><span class="chip rev">Revised</span></div>
+        <p class="purpose">A complete single-player office with zero networking, so movement bugs stay movement bugs.</p>
+        <div class="cols">
+          <div class="col"><strong>Map format</strong><ul>
+            <li>Authored in Tiled, exported as JSON</li>
+            <li>Tileset, floor, walls, furniture layers</li>
+            <li>Collision from tile properties</li>
+            <li>Zones as object rectangles with metadata</li>
+            <li>Spawn points as named objects</li>
+            <li>Stored in Postgres JSONB, fetched at runtime</li>
+          </ul></div>
+          <div class="col"><strong>Avatar</strong><ul>
+            <li>Sprite sheet with four-direction walk</li>
+            <li>Name label and status dot</li>
+            <li>WASD and arrow keys</li>
+            <li>Collision against the wall layer</li>
+            <li>Camera follow with soft bounds</li>
+            <li>Locked 60fps budget</li>
+          </ul></div>
+        </div>
+        <div class="note"><strong>Rule:</strong> nothing about the map is hardcoded in a scene file. A new office should be a new JSON row, not a deploy.</div>
+        <div class="note core"><strong>Asset manifest.</strong> V1 art is Kenney's CC0 packs — RPG Urban for tiles, Roguelike Characters for avatars — chosen because public-domain carries no attribution or share-alike obligation while we are still validating. Everything loads through one manifest mapping logical names (<code>avatar.walk.down</code>, <code>tile.desk</code>) to files, frame rects and tile size. Game code never names a file, and tile size is read from the manifest rather than hardcoded, so replacing 16×16 CC0 art with a paid 32×32 pack is a manifest edit plus a re-slice. Half a day now; a refactor otherwise.</div>
+      </div>
+    </article>
+
+    <article class="phase a">
+      <div class="idx"><span class="n">04</span><span class="dur">2–3 days</span></div>
+      <div>
+        <div class="phase-top"><h3>Backend API</h3></div>
+        <p class="purpose">The persistent layer everything reads on load.</p>
+        <div class="cols">
+          <div class="col"><strong>Endpoints</strong><ul>
+            <li><code>GET /me</code> — user, orgs, memberships</li>
+            <li><code>GET /orgs/:id/offices</code></li>
+            <li><code>GET /offices/:id</code> — config + map</li>
+            <li><code>GET /offices/:id/members</code></li>
+            <li><code>POST /offices/:id/join</code> / <code>leave</code></li>
+            <li><code>POST /invites</code>, <code>POST /invites/accept</code></li>
+            <li><code>GET /healthz</code>, <code>GET /readyz</code></li>
+          </ul></div>
+          <div class="col"><strong>Conventions</strong><ul>
+            <li>Zod validation on every input</li>
+            <li>Org scope enforced in middleware</li>
+            <li>Consistent error shape</li>
+            <li>Request id on every log line</li>
+          </ul></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="phase a">
+      <div class="idx"><span class="n">05</span><span class="dur">5–8 days</span></div>
+      <div>
+        <div class="phase-top"><h3>Realtime multiplayer</h3></div>
+        <p class="purpose">Movement synchronised without touching REST.</p>
+        <div class="cols">
+          <div class="col"><strong>Events</strong><ul>
+            <li><code>JOIN_OFFICE</code> / <code>LEAVE_OFFICE</code></li>
+            <li><code>PLAYER_MOVE</code> / <code>PLAYER_STOP</code></li>
+            <li><code>PLAYER_JOINED</code> / <code>PLAYER_LEFT</code></li>
+            <li><code>ZONE_ENTER</code> / <code>ZONE_EXIT</code></li>
+            <li><code>PRESENCE_UPDATE</code></li>
+            <li><code>STATE_SNAPSHOT</code> on join</li>
+          </ul></div>
+          <div class="col"><strong>Reliability</strong><ul>
+            <li>JWT verified on socket handshake</li>
+            <li>Socket room per office, namespaced by org</li>
+            <li>Position broadcast at 10–15Hz, not per frame</li>
+            <li>Client-side interpolation between ticks</li>
+            <li>Server validates position deltas</li>
+            <li>Heartbeat plus exponential-backoff reconnect</li>
+            <li>Rejoin restores full state, not diffs</li>
+          </ul></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="phase a">
+      <div class="idx"><span class="n">06</span><span class="dur">2–3 days</span></div>
+      <div>
+        <div class="phase-top"><h3>Realtime state store</h3><span class="chip rev">Rewritten</span></div>
+        <p class="purpose">Hot state out of Postgres, in one process, behind a boundary Redis can step into later.</p>
+        <div class="cols">
+          <div class="col"><strong>Holds</strong><ul>
+            <li>Socket id → user, org, office</li>
+            <li>Current position and facing</li>
+            <li>Zone membership</li>
+            <li>Last heartbeat timestamp</li>
+            <li>Presence status</li>
+          </ul></div>
+          <div class="col"><strong>Rules</strong><ul>
+            <li>One <code>PresenceStore</code> interface, nothing else touches state</li>
+            <li><code>MemoryPresenceStore</code> — keys still namespaced by org</li>
+            <li>Sweeper interval for stale connections</li>
+            <li>Duplicate login evicts the older socket</li>
+            <li>No query inside the movement loop</li>
+            <li>Lost on restart, by design</li>
+          </ul></div>
+        </div>
+        <div class="note core"><strong>Why Redis is not here.</strong> With a single Node process, a <code>Map</code> is faster, simpler, and one less service to run, secure and pay for. Redis earns its place the day a second instance exists — at which point Socket.IO also needs a cross-process adapter, and both arrive together as one deliberate change. Building the interface now costs almost nothing and makes that swap a new class rather than a refactor. State surviving a restart is not a V1 requirement: clients resync on reconnect, and phase 15 tests that explicitly by killing the server mid-session.</div>
+      </div>
+    </article>
+
+    <article class="phase a">
+      <div class="idx"><span class="n">07</span><span class="dur">2–3 days</span></div>
+      <div>
+        <div class="phase-top"><h3>Presence</h3></div>
+        <p class="purpose">Status people can trust without asking in chat.</p>
+        <div class="cols">
+          <div class="col"><strong>States</strong><ul>
+            <li>Online — socket alive, heartbeat fresh</li>
+            <li>Away — no input past threshold</li>
+            <li>In meeting — inside a zone</li>
+            <li>Focus — manual, suppresses proximity audio</li>
+            <li>Offline — heartbeat expired</li>
+          </ul></div>
+          <div class="col"><strong>Behaviour</strong><ul>
+            <li>Derived server-side, never client-asserted</li>
+            <li>Debounced so it does not flicker</li>
+            <li>Broadcast only on change</li>
+            <li>Visible on avatar and in the roster</li>
+          </ul></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="phase a">
+      <div class="idx"><span class="n">08</span><span class="dur">4–7 days</span></div>
+      <div>
+        <div class="phase-top"><h3>LiveKit media layer</h3></div>
+        <p class="purpose">Voice, video and screen share, before any spatial logic touches it.</p>
+        <div class="cols">
+          <div class="col"><strong>Server</strong><ul>
+            <li>Short-lived tokens, minted per join</li>
+            <li>Room name <code>org_{id}_office_{id}</code></li>
+            <li>Grants scoped to verified membership</li>
+            <li>API secret never leaves the server</li>
+            <li>Webhook handler for room events</li>
+          </ul></div>
+          <div class="col"><strong>Client</strong><ul>
+            <li>Join with <code>autoSubscribe: false</code></li>
+            <li>Publish mic on join, camera on demand</li>
+            <li>Device picker and permission prompts</li>
+            <li>Mute, camera toggle, screen share</li>
+            <li>Simulcast enabled for video</li>
+            <li>Connection quality surfaced in UI</li>
+          </ul></div>
+        </div>
+        <div class="note core"><strong>The one line that matters:</strong> <code>autoSubscribe: false</code>. Everyone in the office joins the same room, but subscribes to nothing by default. Phase 09 is entirely about deciding what to subscribe to.</div>
+      </div>
+    </article>
+
+    <article class="phase a">
+      <div class="idx"><span class="n">09</span><span class="dur">4–6 days</span></div>
+      <div>
+        <div class="phase-top"><h3>Proximity engine</h3><span class="chip rev">Rewritten</span></div>
+        <p class="purpose">Walk near someone and hear them — implemented as subscription state, never as connection state.</p>
+        <div class="cols">
+          <div class="col"><strong>The loop</strong><ul>
+            <li>Recompute at 5–10Hz, not per frame</li>
+            <li>Squared distance — skip the square root</li>
+            <li>Grid buckets once past ~30 avatars</li>
+            <li>Diff against last tick; act only on change</li>
+          </ul></div>
+          <div class="col"><strong>The rules</strong><ul>
+            <li>Audio subscribe at <code>r_in</code>, drop at <code>r_out</code></li>
+            <li><code>r_out &gt; r_in</code> — hysteresis kills flapping</li>
+            <li>Full volume inside <code>r_core</code></li>
+            <li>Linear falloff <code>r_core → r_out</code> via <code>setVolume()</code></li>
+            <li>Video on a tighter radius than audio</li>
+            <li>Cap concurrent video to nearest N (start at 6)</li>
+            <li>Drop simulcast layer as distance grows</li>
+          </ul></div>
+        </div>
+        <div class="note core"><strong>Why this replaces Rev 1's model:</strong> connecting and disconnecting peers at a boundary means renegotiation every time someone paces at the edge of a radius — the churn the old plan flagged but could not solve. Toggling <code>setSubscribed()</code> on an existing SFU connection costs nothing and needs no renegotiation. Two radii plus hysteresis is the whole fix.</div>
+      </div>
+    </article>
+
+    <article class="phase a">
+      <div class="idx"><span class="n">10</span><span class="dur">3–4 days</span></div>
+      <div>
+        <div class="phase-top"><h3>Zones and the standup room</h3></div>
+        <p class="purpose">Bounded spaces that override the distance rules.</p>
+        <div class="cols">
+          <div class="col"><strong>Behaviour</strong><ul>
+            <li>Zone rectangles come from the map JSON</li>
+            <li>Server authoritative on enter and exit</li>
+            <li>Inside: subscribe to all members regardless of distance</li>
+            <li>Inside: hard-mute everyone outside</li>
+            <li>Outside: zone occupants are inaudible</li>
+            <li>Presence flips to In meeting</li>
+          </ul></div>
+          <div class="col"><strong>Zone types</strong><ul>
+            <li>Standup room — everyone equal</li>
+            <li>Private booth — capacity 2–4</li>
+            <li>Desk — solo, proximity suppressed</li>
+            <li>Quiet area — no audio at all</li>
+          </ul></div>
+        </div>
+        <div class="note core"><strong>Milestone:</strong> the full team walks into the standup room and runs a real meeting with voice and video. This is the first day the thing feels like a product.</div>
+      </div>
+    </article>
+
+    <article class="phase a">
+      <div class="idx"><span class="n">11</span><span class="dur">3–5 days</span></div>
+      <div>
+        <div class="phase-top"><h3>Communication UX</h3></div>
+        <p class="purpose">The difference between a demo and something people tolerate daily.</p>
+        <div class="cols">
+          <div class="col"><strong>Signals</strong><ul>
+            <li>Speaking ring on the avatar</li>
+            <li>Who can currently hear you</li>
+            <li>Mute and camera state, always visible</li>
+            <li>Connection quality indicator</li>
+            <li>Roster with presence and jump-to</li>
+          </ul></div>
+          <div class="col"><strong>Failure states</strong><ul>
+            <li>Permission denied — recoverable, with instructions</li>
+            <li>Reconnecting banner with live status</li>
+            <li>Device disconnected mid-call</li>
+            <li>Errors that say what to do next</li>
+            <li>Skeletons on map and roster load</li>
+            <li>Firefox and Safari verified, not assumed</li>
+          </ul></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="phase a">
+      <div class="idx"><span class="n">12</span><span class="dur">3–5 days</span></div>
+      <div>
+        <div class="phase-top"><h3>Production infrastructure</h3></div>
+        <p class="purpose">Deployable, observable, repeatable.</p>
+        <div class="cols">
+          <div class="col"><strong>Hosting</strong><ul>
+            <li>Frontend on Vercel or equivalent</li>
+            <li>Server on a host with real WebSocket support</li>
+            <li>Managed Postgres with PITR</li>
+            <li>LiveKit Cloud</li>
+            <li>HTTPS, custom domain, WSS</li>
+          </ul></div>
+          <div class="col"><strong>Pipeline</strong><ul>
+            <li>CI on every push — typecheck, lint, test</li>
+            <li>Migrations run on deploy, reversible</li>
+            <li>Secrets in a manager, never in env files</li>
+            <li>Staging mirrors prod</li>
+            <li>Health and readiness probes wired to the LB</li>
+            <li>One server instance — revisit when that changes</li>
+          </ul></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="phase a">
+      <div class="idx"><span class="n">13</span><span class="dur">3–5 days</span></div>
+      <div>
+        <div class="phase-top"><h3>Security and reliability</h3></div>
+        <p class="purpose">Before anyone outside the room depends on it.</p>
+        <div class="cols">
+          <div class="col"><strong>Security</strong><ul>
+            <li>Org isolation test suite in CI</li>
+            <li>Socket auth and per-event authorization</li>
+            <li>Rate limits on REST and socket events</li>
+            <li>Input validation at every boundary</li>
+            <li>LiveKit grants minimal and short-lived</li>
+            <li>Dependency and secret scanning</li>
+          </ul></div>
+          <div class="col"><strong>Reliability</strong><ul>
+            <li>Survive a server restart with state loss</li>
+            <li>Graceful shutdown drains sockets</li>
+            <li>Reconnect storm after a deploy</li>
+            <li>Tested backup restore, not just backups</li>
+            <li>Written runbook for the three likely outages</li>
+          </ul></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="phase a">
+      <div class="idx"><span class="n">14</span><span class="dur">2–3 days</span></div>
+      <div>
+        <div class="phase-top"><h3>Observability</h3></div>
+        <p class="purpose">Find out before a teammate tells you.</p>
+        <div class="cols">
+          <div class="col"><strong>Metrics</strong><ul>
+            <li>Socket connects, drops, reconnect rate</li>
+            <li>Movement event latency p50 / p95 / p99</li>
+            <li>Subscription churn per minute</li>
+            <li>LiveKit join failures and ICE failures</li>
+            <li>Client frame rate, sampled</li>
+          </ul></div>
+          <div class="col"><strong>Plumbing</strong><ul>
+            <li>Structured logs with org, user, request id</li>
+            <li>Error tracking front and back</li>
+            <li>Postgres health and slow-query dashboard</li>
+            <li>Presence store size and sweeper activity</li>
+            <li>Alerts on reconnect rate and join failure</li>
+          </ul></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="phase a">
+      <div class="idx"><span class="n">15</span><span class="dur">4–7 days</span></div>
+      <div>
+        <div class="phase-top"><h3>Load testing and QA</h3></div>
+        <p class="purpose">Prove it with browsers, not with assumptions.</p>
+        <div class="cols">
+          <div class="col"><strong>Scenarios</strong><ul>
+            <li>Playwright driving 10 headless contexts</li>
+            <li>All 10 moving continuously for 30 minutes</li>
+            <li>All 10 with mic on in one zone</li>
+            <li>Rapid zone enter/exit — churn test</li>
+            <li>Pacing on a radius boundary — hysteresis test</li>
+          </ul></div>
+          <div class="col"><strong>Failure injection</strong><ul>
+            <li>Network drop and restore</li>
+            <li>Server restart mid-session — full state loss, clean resync</li>
+            <li>Mic and camera denied</li>
+            <li>Same user logged in twice</li>
+            <li>Tab backgrounded for 20 minutes</li>
+          </ul></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="phase a">
+      <div class="idx"><span class="n">16</span><span class="dur">1 week</span></div>
+      <div>
+        <div class="phase-top"><h3>Internal launch</h3></div>
+        <p class="purpose">Your own team, every working day.</p>
+        <div class="cols">
+          <div class="col"><strong>Rollout</strong><ul>
+            <li>Invite all 10, real accounts and avatars</li>
+            <li>Standup in the office, every day, no fallback</li>
+            <li>One channel for bugs and friction</li>
+          </ul></div>
+          <div class="col"><strong>Measure</strong><ul>
+            <li>Sessions per person per day</li>
+            <li>Minutes in proximity vs in zones</li>
+            <li>Connection failure rate</li>
+            <li>Every time someone left for Meet, and why</li>
+          </ul></div>
+        </div>
+        <div class="note core"><strong>Freeze features for the first cycle.</strong> The temptation to fix friction by adding surface is how V1 becomes V0.5 of something larger and less finished.</div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<div class="track b">
+  <h2>Track B — the product</h2>
+  <p>Phases 17–23. What turns a working office into something a team outside yours will pay for.</p>
+</div>
+
+<section>
+  <div class="stack">
+
+    <article class="phase b">
+      <div class="idx"><span class="n">17</span><span class="dur">6–9 days</span></div>
+      <div>
+        <div class="phase-top"><h3>Async chat</h3><span class="chip new">New</span></div>
+        <p class="purpose">The office is empty at 3am. Chat is what makes it worth opening anyway.</p>
+        <div class="cols">
+          <div class="col"><strong>Model</strong><ul>
+            <li><code>channels</code> — org-scoped, public or private</li>
+            <li><code>messages</code> — threaded via parent id</li>
+            <li><code>reactions</code>, <code>read_state</code> per user</li>
+            <li>DMs as two-member channels</li>
+            <li>Channel bound to a zone, optionally</li>
+          </ul></div>
+          <div class="col"><strong>Behaviour</strong><ul>
+            <li>Delivered over the existing socket</li>
+            <li>History paginated over REST</li>
+            <li>Unread badges and mention counts</li>
+            <li>Markdown, code blocks, file attachments</li>
+            <li>Full-text search via Postgres <code>tsvector</code></li>
+            <li>Email digest for mentions while offline</li>
+          </ul></div>
+        </div>
+        <div class="note signal"><strong>Why first in Track B:</strong> it is the only phase here that changes daily behaviour on its own. Everything after it improves meetings; this one gives the product a reason to be open when no meeting is happening.</div>
+      </div>
+    </article>
+
+    <article class="phase b">
+      <div class="idx"><span class="n">18</span><span class="dur">4–6 days</span></div>
+      <div>
+        <div class="phase-top"><h3>Recording</h3><span class="chip new">New</span></div>
+        <p class="purpose">Capture zone conversations to durable storage.</p>
+        <div class="cols">
+          <div class="col"><strong>Pipeline</strong><ul>
+            <li>LiveKit Egress, room composite per zone</li>
+            <li>Start and stop from the zone UI</li>
+            <li>Written to S3 with org-scoped prefixes</li>
+            <li><code>recordings</code> table — zone, participants, duration</li>
+            <li>Signed URLs, short expiry</li>
+          </ul></div>
+          <div class="col"><strong>Consent and control</strong><ul>
+            <li>Visible recording indicator for everyone present</li>
+            <li>Announcement on start, no silent capture</li>
+            <li>Per-org retention policy</li>
+            <li>Delete removes the object, not just the row</li>
+            <li>Admin-only access controls</li>
+          </ul></div>
+        </div>
+        <div class="note"><strong>Get this right the first time.</strong> Recording is the feature where a mistake is a legal problem, not a bug. Consent UI ships with the feature, not after it.</div>
+      </div>
+    </article>
+
+    <article class="phase b">
+      <div class="idx"><span class="n">19</span><span class="dur">4–6 days</span></div>
+      <div>
+        <div class="phase-top"><h3>Transcription</h3><span class="chip new">New</span></div>
+        <p class="purpose">Turn audio into text with speakers attached.</p>
+        <div class="cols">
+          <div class="col"><strong>Processing</strong><ul>
+            <li>Job queued on egress completion webhook</li>
+            <li>Per-participant audio tracks for clean diarization</li>
+            <li>Speech-to-text with word timestamps</li>
+            <li>Map speaker labels to real user ids</li>
+            <li><code>transcripts</code> — segments as JSONB</li>
+          </ul></div>
+          <div class="col"><strong>Surface</strong><ul>
+            <li>Readable transcript with speaker names</li>
+            <li>Click a line, jump to that second of audio</li>
+            <li>Search across all transcripts in the org</li>
+            <li>Live captions as a later increment</li>
+          </ul></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="phase b">
+      <div class="idx"><span class="n">20</span><span class="dur">5–7 days</span></div>
+      <div>
+        <div class="phase-top"><h3>AI meeting notes</h3><span class="chip new">New</span></div>
+        <p class="purpose">The transcript nobody reads, turned into the summary everybody does.</p>
+        <div class="cols">
+          <div class="col"><strong>Generation</strong><ul>
+            <li>Claude over the diarized transcript</li>
+            <li>Summary, decisions, action items with owners</li>
+            <li>Open questions and follow-ups</li>
+            <li>Every claim cites its transcript timestamp</li>
+            <li>Long meetings chunked, then merged</li>
+          </ul></div>
+          <div class="col"><strong>Delivery</strong><ul>
+            <li>Posted to the zone's chat channel automatically</li>
+            <li>Editable — the model drafts, humans correct</li>
+            <li>Action items assignable to members</li>
+            <li>Semantic search via pgvector over past meetings</li>
+            <li>Weekly digest per channel</li>
+          </ul></div>
+        </div>
+        <div class="note signal"><strong>This is the differentiator, not the checkbox.</strong> Everyone ships meeting summaries now. The version worth paying for knows who was in the room, which zone it happened in, and what was decided last time — context a standalone notetaker does not have. That advantage exists only because phases 02, 10 and 17 modelled orgs, zones and channels properly.</div>
+      </div>
+    </article>
+
+    <article class="phase b">
+      <div class="idx"><span class="n">21</span><span class="dur">5–8 days</span></div>
+      <div>
+        <div class="phase-top"><h3>Integrations</h3><span class="chip new">New</span></div>
+        <p class="purpose">Make the office reflect the work happening outside it.</p>
+        <div class="cols">
+          <div class="col"><strong>Google Calendar</strong><ul>
+            <li>OAuth per user, tokens encrypted at rest</li>
+            <li>Next meeting shown on the avatar</li>
+            <li>Presence flips to Busy during events</li>
+            <li>Calendar event links straight into a zone</li>
+            <li>Standup reminder pings the office</li>
+          </ul></div>
+          <div class="col"><strong>GitHub and Spotify</strong><ul>
+            <li>GitHub App — PR and review events to a channel</li>
+            <li>Deploy and CI status on an office display</li>
+            <li>Optional "what I'm working on" from open PRs</li>
+            <li>Spotify — shared audio in social zones</li>
+            <li>Volume ducks automatically when someone speaks</li>
+          </ul></div>
+        </div>
+        <div class="note"><strong>Order within the phase:</strong> Calendar first — it changes presence accuracy, which makes the whole product more trustworthy. GitHub second. Spotify last; it is delight, not retention.</div>
+      </div>
+    </article>
+
+    <article class="phase b">
+      <div class="idx"><span class="n">22</span><span class="dur">6–9 days</span></div>
+      <div>
+        <div class="phase-top"><h3>Billing and self-serve onboarding</h3><span class="chip new">New</span></div>
+        <p class="purpose">The phase that converts a product into a business.</p>
+        <div class="cols">
+          <div class="col"><strong>Commerce</strong><ul>
+            <li>Stripe, seat-based per active member</li>
+            <li>Seats reconciled nightly against memberships</li>
+            <li>Trial with a hard, honest expiry</li>
+            <li>Webhooks drive entitlement, not the UI</li>
+            <li>Invoices, proration, dunning, cancellation</li>
+          </ul></div>
+          <div class="col"><strong>Onboarding</strong><ul>
+            <li>Sign up → org created → office seeded in one flow</li>
+            <li>Template offices, no blank canvas</li>
+            <li>Bulk invite by email or domain</li>
+            <li>Guided first standup</li>
+            <li>Admin panel — members, roles, billing, retention</li>
+          </ul></div>
+        </div>
+        <div class="note signal"><strong>Pricing context:</strong> Gather 2.0 charges roughly $12 per member per month and bills for members rather than concurrent users. Concurrent-user pricing punishes teams for showing up, which is why they moved off it. Price per member, and make sure phase 02's membership table is the single source of truth for the seat count.</div>
+      </div>
+    </article>
+
+    <article class="phase b">
+      <div class="idx"><span class="n">23</span><span class="dur">6–9 days</span></div>
+      <div>
+        <div class="phase-top"><h3>Enterprise readiness</h3><span class="chip new">New</span></div>
+        <p class="purpose">The gap in the market leader's new platform.</p>
+        <div class="cols">
+          <div class="col"><strong>Access</strong><ul>
+            <li>SAML and OIDC SSO — WorkOS in front of Better Auth</li>
+            <li>SCIM provisioning and deprovisioning</li>
+            <li>Custom roles beyond admin and member</li>
+            <li>Domain capture for auto-join</li>
+            <li>Audit log of admin actions</li>
+          </ul></div>
+          <div class="col"><strong>Scale and trust</strong><ul>
+            <li>Offices above 100 concurrent members</li>
+            <li>Data residency options</li>
+            <li>Retention and deletion policies per org</li>
+            <li>Outlook calendar alongside Google</li>
+            <li>Security questionnaire and DPA ready</li>
+          </ul></div>
+        </div>
+        <div class="note signal"><strong>Why this is the wedge:</strong> Gather's own migration guide tells customers to stay on the legacy platform if they need offices over 100 people, Outlook, or SSO. Those customers are already paying, already sold on spatial offices, and currently stuck on software their vendor calls Classic. That is the most qualified pipeline available to you.</div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="eyebrow">07</span><h2>How the UI gets built</h2></div>
+  <div class="stack">
+    <p>The interface is two different problems wearing one screen, and conflating them is the mistake that makes this slow. Split them explicitly and tool each one differently.</p>
+
+    <div class="tiles">
+      <div class="tile">
+        <span class="eyebrow">Layer one</span>
+        <h3>DOM — React</h3>
+        <p>Auth, roster, chat, controls, settings, admin, marketing. Roughly 70% of the work. Conventional web UI, and every tool below applies.</p>
+      </div>
+      <div class="tile">
+        <span class="eyebrow">Layer two</span>
+        <h3>Canvas — Phaser</h3>
+        <p>Map, avatars, movement, zone overlays, proximity indicators. Hand-written. No design tool reads a canvas, and no MCP will generate it for you.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top:26px;">Tooling that actually helps, and where</h3>
+    <div class="tablewrap" style="margin-top:12px;">
+      <table>
+        <thead><tr><th>Tool</th><th>Layer</th><th>What it does for this project</th></tr></thead>
+        <tbody>
+          <tr><td>Claude Design</td><td>DOM</td><td>The <code>/design</code> canvas in this session. Lay out the office shell, roster, chat panel and settings as artboards, adjust them visually, then build from the agreed layout. Cheapest place to resolve a layout argument.</td></tr>
+          <tr><td>shadcn/ui + MCP</td><td>DOM</td><td>Component source of truth. You own the code, so restyling the whole app later does not mean fighting a vendor's theme. The MCP lets the agent pull real component source instead of approximating it.</td></tr>
+          <tr><td>Playwright MCP</td><td>Both</td><td>The highest-value one here. Drives real browsers, so it verifies UI changes — and the same harness runs the ten-client load test in phase 15. Build the multi-client rig once and use it for both.</td></tr>
+          <tr><td>Chrome DevTools MCP</td><td>Canvas</td><td>Frame profiling. Phaser plus a proximity loop plus ten video tiles is a real frame budget, and this is how you find what is eating it.</td></tr>
+          <tr><td>Figma Dev Mode MCP</td><td>DOM</td><td>Only worth it if design genuinely lives in Figma. If it does not, skip it — do not adopt Figma just to have an MCP for it.</td></tr>
+          <tr><td>Context7 MCP</td><td>Both</td><td>Current docs for LiveKit and Phaser. Both move faster than model training data, and LiveKit's subscription API in particular is easy to get subtly wrong from memory.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note"><strong>The honest limit:</strong> none of these help with the canvas layer, which is the part that makes the product feel like a place rather than a webpage. Budget real hand-written time for tile art, avatar animation and movement feel. Buy or commission the sprite set — a 16×16 or 32×32 asset pack costs a weekend of your time and looks better than what you would draw.</div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="eyebrow">08</span><h2>Still out of scope</h2></div>
+  <div class="stack">
+    <p>Cut in Revision 1 and still cut. Each one is defensible later; none is defensible now.</p>
+    <div class="excluded">
+      <div>Full 3D or Blender pipeline</div>
+      <div>In-app office editor</div>
+      <div>Desktop application</div>
+      <div>Native mobile</div>
+      <div>Autoscaling across regions</div>
+      <div>Self-hosted SFU</div>
+      <div>Public or guest spaces</div>
+      <div>Events and conference mode</div>
+      <div>Marketplace or plugin API</div>
+      <div>Whiteboards and docs</div>
+      <div>Advanced analytics product</div>
+      <div>An always-on AI participant</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="eyebrow">09</span><h2>Build order</h2></div>
+  <div class="stack">
+    <p>One bounded task at a time. Teal is Track A, amber is Track B.</p>
+    <div class="order">
+      <div>Thesis, contracts, ERD with orgs</div>
+      <div>Monorepo and shared types</div>
+      <div>Postgres schema and migrations</div>
+      <div>Better Auth with org plugin</div>
+      <div>Org isolation test suite</div>
+      <div>Asset manifest and Kenney art</div>
+      <div>Tiled map format and loader</div>
+      <div>Phaser single-player office</div>
+      <div>Backend API</div>
+      <div>Socket server and auth</div>
+      <div>Multiplayer movement sync</div>
+      <div>In-memory PresenceStore</div>
+      <div>Presence and heartbeat</div>
+      <div>LiveKit token service</div>
+      <div>Media join, autoSubscribe false</div>
+      <div>Proximity subscription engine</div>
+      <div>Zones and standup room</div>
+      <div>Reconnect and error UX</div>
+      <div>Deploy staging</div>
+      <div>Security review</div>
+      <div>Playwright ten-client load test</div>
+      <div>Deploy production</div>
+      <div>Internal daily standups — one week</div>
+      <div class="b">Async chat</div>
+      <div class="b">Recording and consent</div>
+      <div class="b">Transcription pipeline</div>
+      <div class="b">AI meeting notes</div>
+      <div class="b">Google Calendar</div>
+      <div class="b">GitHub, then Spotify</div>
+      <div class="b">Stripe and onboarding</div>
+      <div class="b">SSO, SCIM, audit log</div>
+      <div class="b">First external design partner</div>
+    </div>
+    <div class="note core"><strong>Working rule with AI:</strong> hand over one bounded, testable phase at a time. Architecture, security boundaries, realtime behaviour, proximity feel and final review stay human. The failure mode is not bad code — it is plausible code that quietly breaks org isolation or renegotiates a peer connection sixty times a second.</div>
+  </div>
+</section>
+
+<footer>
+  <span>Revision 2 · Track A 5–7 weeks · Track B 6–9 weeks</span>
+  <span>2D-first · org-scoped · LiveKit SFU</span>
+</footer>
+
+</div>
