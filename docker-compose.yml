@@ -1,0 +1,31 @@
+# Local development only. Production uses managed Postgres (phase 12).
+#
+#   docker compose up -d      start
+#   docker compose down       stop, keep data
+#   docker compose down -v    stop, delete data
+
+services:
+  postgres:
+    image: postgres:18.6-alpine
+    container_name: vo-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: vo
+      POSTGRES_PASSWORD: vo_local_dev_only
+      POSTGRES_DB: virtual_office
+    ports:
+      - "5432:5432"
+    volumes:
+      # Postgres 18+ expects the mount at /var/lib/postgresql, not
+      # /var/lib/postgresql/data — it stores data in a major-version
+      # subdirectory so pg_upgrade --link works across a version bump.
+      # Using the older path makes the container restart-loop.
+      - vo-pgdata:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U vo -d virtual_office"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  vo-pgdata:
