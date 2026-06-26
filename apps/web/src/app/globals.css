@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: #101314;
+  color: #e9eaea;
+  overscroll-behavior: none;
+}
+
+/* The canvas owns arrow keys; stop the page scrolling under it. */
+canvas {
+  display: block;
+  touch-action: none;
+}
