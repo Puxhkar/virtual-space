@@ -1,0 +1,132 @@
+{
+  "tileSize": 32,
+  "characters": {
+    "key": "people",
+    "file": "limezu/characters.png",
+    "frameWidth": 32,
+    "frameHeight": 64,
+    "columns": 28,
+    "footOffsetY": 48,
+    "idle": {
+      "right": {
+        "column": 0,
+        "length": 1
+      },
+      "up": {
+        "column": 1,
+        "length": 1
+      },
+      "left": {
+        "column": 2,
+        "length": 1
+      },
+      "down": {
+        "column": 3,
+        "length": 1
+      }
+    },
+    "walk": {
+      "right": {
+        "column": 4,
+        "length": 6
+      },
+      "up": {
+        "column": 10,
+        "length": 6
+      },
+      "left": {
+        "column": 16,
+        "length": 6
+      },
+      "down": {
+        "column": 22,
+        "length": 6
+      }
+    },
+    "variants": [
+      {
+        "key": "p01",
+        "row": 0
+      },
+      {
+        "key": "p02",
+        "row": 1
+      },
+      {
+        "key": "p03",
+        "row": 2
+      },
+      {
+        "key": "p04",
+        "row": 3
+      },
+      {
+        "key": "p05",
+        "row": 4
+      },
+      {
+        "key": "p06",
+        "row": 5
+      },
+      {
+        "key": "p07",
+        "row": 6
+      },
+      {
+        "key": "p08",
+        "row": 7
+      },
+      {
+        "key": "p09",
+        "row": 8
+      },
+      {
+        "key": "p10",
+        "row": 9
+      },
+      {
+        "key": "p11",
+        "row": 10
+      },
+      {
+        "key": "p12",
+        "row": 11
+      },
+      {
+        "key": "p13",
+        "row": 12
+      },
+      {
+        "key": "p14",
+        "row": 13
+      },
+      {
+        "key": "p15",
+        "row": 14
+      },
+      {
+        "key": "p16",
+        "row": 15
+      },
+      {
+        "key": "p17",
+        "row": 16
+      },
+      {
+        "key": "p18",
+        "row": 17
+      },
+      {
+        "key": "p19",
+        "row": 18
+      },
+      {
+        "key": "p20",
+        "row": 19
+      }
+    ]
+  },
+  "credits": [
+    "Art: Modern Interiors by LimeZu \u2014 limezu.itch.io (licensed, credit required)"
+  ]
+}

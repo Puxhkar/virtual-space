@@ -1,0 +1,245 @@
+[
+  {
+    "key": "room-builder",
+    "name": "Walls & floors",
+    "file": "limezu/tiles/room-builder.png",
+    "columns": 76,
+    "rows": 113,
+    "structural": true,
+    "firstGid": 1
+  },
+  {
+    "key": "generic",
+    "name": "Generic",
+    "file": "limezu/tiles/generic.png",
+    "columns": 16,
+    "rows": 78,
+    "structural": false,
+    "firstGid": 8589
+  },
+  {
+    "key": "living-room",
+    "name": "Living room",
+    "file": "limezu/tiles/living-room.png",
+    "columns": 16,
+    "rows": 45,
+    "structural": false,
+    "firstGid": 9837
+  },
+  {
+    "key": "bathroom",
+    "name": "Bathroom",
+    "file": "limezu/tiles/bathroom.png",
+    "columns": 16,
+    "rows": 56,
+    "structural": false,
+    "firstGid": 10557
+  },
+  {
+    "key": "bedroom",
+    "name": "Bedroom",
+    "file": "limezu/tiles/bedroom.png",
+    "columns": 16,
+    "rows": 107,
+    "structural": false,
+    "firstGid": 11453
+  },
+  {
+    "key": "classroom-library",
+    "name": "Classroom & library",
+    "file": "limezu/tiles/classroom-library.png",
+    "columns": 16,
+    "rows": 34,
+    "structural": false,
+    "firstGid": 13165
+  },
+  {
+    "key": "music-sport",
+    "name": "Music & sport",
+    "file": "limezu/tiles/music-sport.png",
+    "columns": 16,
+    "rows": 48,
+    "structural": false,
+    "firstGid": 13709
+  },
+  {
+    "key": "art",
+    "name": "Art",
+    "file": "limezu/tiles/art.png",
+    "columns": 16,
+    "rows": 7,
+    "structural": false,
+    "firstGid": 14477
+  },
+  {
+    "key": "gym",
+    "name": "Gym",
+    "file": "limezu/tiles/gym.png",
+    "columns": 16,
+    "rows": 33,
+    "structural": false,
+    "firstGid": 14589
+  },
+  {
+    "key": "fishing",
+    "name": "Fishing",
+    "file": "limezu/tiles/fishing.png",
+    "columns": 16,
+    "rows": 27,
+    "structural": false,
+    "firstGid": 15117
+  },
+  {
+    "key": "birthday-party",
+    "name": "Birthday party",
+    "file": "limezu/tiles/birthday-party.png",
+    "columns": 12,
+    "rows": 7,
+    "structural": false,
+    "firstGid": 15549
+  },
+  {
+    "key": "halloween",
+    "name": "Halloween",
+    "file": "limezu/tiles/halloween.png",
+    "columns": 16,
+    "rows": 61,
+    "structural": false,
+    "firstGid": 15633
+  },
+  {
+    "key": "kitchen",
+    "name": "Kitchen",
+    "file": "limezu/tiles/kitchen.png",
+    "columns": 16,
+    "rows": 49,
+    "structural": false,
+    "firstGid": 16609
+  },
+  {
+    "key": "conference-hall",
+    "name": "Conference Hall",
+    "file": "limezu/tiles/conference-hall.png",
+    "columns": 16,
+    "rows": 12,
+    "structural": false,
+    "firstGid": 17393
+  },
+  {
+    "key": "basement",
+    "name": "Basement",
+    "file": "limezu/tiles/basement.png",
+    "columns": 16,
+    "rows": 50,
+    "structural": false,
+    "firstGid": 17585
+  },
+  {
+    "key": "christmas",
+    "name": "Christmas",
+    "file": "limezu/tiles/christmas.png",
+    "columns": 16,
+    "rows": 17,
+    "structural": false,
+    "firstGid": 18385
+  },
+  {
+    "key": "grocery-store",
+    "name": "Grocery store",
+    "file": "limezu/tiles/grocery-store.png",
+    "columns": 16,
+    "rows": 78,
+    "structural": false,
+    "firstGid": 18657
+  },
+  {
+    "key": "upstairs-system",
+    "name": "Upstairs system",
+    "file": "limezu/tiles/upstairs-system.png",
+    "columns": 16,
+    "rows": 27,
+    "structural": false,
+    "firstGid": 19905
+  },
+  {
+    "key": "jail",
+    "name": "Jail",
+    "file": "limezu/tiles/jail.png",
+    "columns": 16,
+    "rows": 45,
+    "structural": false,
+    "firstGid": 20337
+  },
+  {
+    "key": "hospital",
+    "name": "Hospital",
+    "file": "limezu/tiles/hospital.png",
+    "columns": 16,
+    "rows": 110,
+    "structural": false,
+    "firstGid": 21057
+  },
+  {
+    "key": "japanese-interiors",
+    "name": "Japanese interiors",
+    "file": "limezu/tiles/japanese-interiors.png",
+    "columns": 16,
+    "rows": 32,
+    "structural": false,
+    "firstGid": 22817
+  },
+  {
+    "key": "clothing-store",
+    "name": "Clothing Store",
+    "file": "limezu/tiles/clothing-store.png",
+    "columns": 16,
+    "rows": 67,
+    "structural": false,
+    "firstGid": 23329
+  },
+  {
+    "key": "museum",
+    "name": "Museum",
+    "file": "limezu/tiles/museum.png",
+    "columns": 16,
+    "rows": 122,
+    "structural": false,
+    "firstGid": 24401
+  },
+  {
+    "key": "tv-film-studio",
+    "name": "TV & film studio",
+    "file": "limezu/tiles/tv-film-studio.png",
+    "columns": 16,
+    "rows": 14,
+    "structural": false,
+    "firstGid": 26353
+  },
+  {
+    "key": "ice-cream-shop",
+    "name": "Ice Cream Shop",
+    "file": "limezu/tiles/ice-cream-shop.png",
+    "columns": 16,
+    "rows": 17,
+    "structural": false,
+    "firstGid": 26577
+  },
+  {
+    "key": "shooting-range",
+    "name": "Shooting Range",
+    "file": "limezu/tiles/shooting-range.png",
+    "columns": 16,
+    "rows": 5,
+    "structural": false,
+    "firstGid": 26849
+  },
+  {
+    "key": "condominium",
+    "name": "Condominium",
+    "file": "limezu/tiles/condominium.png",
+    "columns": 16,
+    "rows": 19,
+    "structural": false,
+    "firstGid": 26929
+  }
+]
