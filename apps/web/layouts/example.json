@@ -1,0 +1,35 @@
+{
+  "width": 30,
+  "height": 20,
+  "palette": {
+    "carpet": 2468,
+    "teal": 1776,
+    "wall": 4996
+  },
+  "floor": "carpet",
+  "wall": "wall",
+  "entrance": { "x": 15, "y": 17 },
+  "rooms": [
+    {
+      "name": "Standup",
+      "kind": "meeting",
+      "x": 2,
+      "y": 2,
+      "w": 10,
+      "h": 8,
+      "floor": "teal",
+      "doors": [{ "x": 6, "y": 9, "w": 2 }],
+      "furniture": [{ "object": "conference-hall#11", "x": 2, "y": 2 }]
+    },
+    {
+      "name": "Focus booth",
+      "kind": "booth",
+      "x": 18,
+      "y": 2,
+      "w": 8,
+      "h": 6,
+      "doors": [{ "x": 21, "y": 7, "w": 2 }],
+      "furniture": [{ "object": "classroom-library#36", "x": 2, "y": 1 }]
+    }
+  ]
+}
