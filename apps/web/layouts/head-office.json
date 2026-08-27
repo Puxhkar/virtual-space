@@ -1,0 +1,402 @@
+{
+  "width": 44,
+  "height": 34,
+  "palette": {
+    "concourse": 2468,
+    "cabins": 1146,
+    "meeting": 1168,
+    "cafe": 1298,
+    "standup": 1408,
+    "tech": 4199,
+    "wall": 4995
+  },
+  "floor": "concourse",
+  "wall": "wall",
+  "entrance": {
+    "x": 21,
+    "y": 31
+  },
+  "rooms": [
+    {
+      "name": "Building",
+      "x": 0,
+      "y": 0,
+      "w": 44,
+      "h": 34,
+      "walls": true,
+      "doors": [
+        {
+          "x": 21,
+          "y": 33,
+          "w": 2
+        }
+      ],
+      "furniture": []
+    },
+    {
+      "name": "Cabin 1",
+      "kind": "quiet",
+      "capacity": 1,
+      "x": 2,
+      "y": 1,
+      "w": 8,
+      "h": 8,
+      "floor": "cabins",
+      "doors": [
+        {
+          "x": 4,
+          "y": 8,
+          "w": 2
+        }
+      ],
+      "furniture": [
+        {
+          "object": "classroom-library#9",
+          "x": 1,
+          "y": 2
+        },
+        {
+          "object": "generic#137",
+          "x": 3,
+          "y": 5
+        },
+        {
+          "object": "generic#41",
+          "x": 6,
+          "y": 2
+        }
+      ]
+    },
+    {
+      "name": "Focus booth",
+      "kind": "booth",
+      "capacity": 4,
+      "x": 11,
+      "y": 1,
+      "w": 8,
+      "h": 8,
+      "floor": "cabins",
+      "doors": [
+        {
+          "x": 13,
+          "y": 8,
+          "w": 2
+        }
+      ],
+      "furniture": [
+        {
+          "object": "classroom-library#9",
+          "x": 1,
+          "y": 2
+        },
+        {
+          "object": "generic#138",
+          "x": 3,
+          "y": 5
+        },
+        {
+          "object": "generic#43",
+          "x": 6,
+          "y": 2
+        }
+      ]
+    },
+    {
+      "name": "Cabin 3",
+      "kind": "quiet",
+      "capacity": 1,
+      "x": 20,
+      "y": 1,
+      "w": 8,
+      "h": 8,
+      "floor": "cabins",
+      "doors": [
+        {
+          "x": 22,
+          "y": 8,
+          "w": 2
+        }
+      ],
+      "furniture": [
+        {
+          "object": "classroom-library#9",
+          "x": 1,
+          "y": 2
+        },
+        {
+          "object": "generic#139",
+          "x": 3,
+          "y": 5
+        },
+        {
+          "object": "generic#97",
+          "x": 6,
+          "y": 2
+        }
+      ]
+    },
+    {
+      "name": "Conference Room",
+      "kind": "meeting",
+      "capacity": 8,
+      "x": 30,
+      "y": 1,
+      "w": 12,
+      "h": 10,
+      "floor": "meeting",
+      "doors": [
+        {
+          "x": 34,
+          "y": 10,
+          "w": 2
+        }
+      ],
+      "furniture": [
+        {
+          "object": "conference-hall#7",
+          "x": 4,
+          "y": 1
+        },
+        {
+          "object": "conference-hall#1",
+          "x": 3,
+          "y": 4
+        },
+        {
+          "object": "conference-hall#12",
+          "x": 2,
+          "y": 4
+        },
+        {
+          "object": "conference-hall#13",
+          "x": 8,
+          "y": 4
+        },
+        {
+          "object": "conference-hall#15",
+          "x": 4,
+          "y": 7
+        },
+        {
+          "object": "conference-hall#25",
+          "x": 6,
+          "y": 7
+        },
+        {
+          "object": "generic#41",
+          "x": 9,
+          "y": 2
+        }
+      ]
+    },
+    {
+      "name": "Music Cafeteria",
+      "kind": "booth",
+      "capacity": 6,
+      "x": 2,
+      "y": 12,
+      "w": 14,
+      "h": 18,
+      "floor": "cafe",
+      "doors": [
+        {
+          "x": 15,
+          "y": 19,
+          "h": 2
+        }
+      ],
+      "furniture": [
+        {
+          "object": "kitchen#0",
+          "x": 1,
+          "y": 1
+        },
+        {
+          "object": "kitchen#38",
+          "x": 10,
+          "y": 2
+        },
+        {
+          "object": "kitchen#89",
+          "x": 3,
+          "y": 4
+        },
+        {
+          "object": "kitchen#90",
+          "x": 4,
+          "y": 4
+        },
+        {
+          "object": "kitchen#91",
+          "x": 5,
+          "y": 4
+        },
+        {
+          "object": "music-sport#80",
+          "x": 1,
+          "y": 6
+        },
+        {
+          "object": "music-sport#81",
+          "x": 2,
+          "y": 6
+        },
+        {
+          "object": "music-sport#18",
+          "x": 4,
+          "y": 8
+        },
+        {
+          "object": "music-sport#151",
+          "x": 1,
+          "y": 10
+        },
+        {
+          "object": "living-room#30",
+          "x": 6,
+          "y": 12
+        },
+        {
+          "object": "generic#34",
+          "x": 5,
+          "y": 14
+        },
+        {
+          "object": "generic#36",
+          "x": 9,
+          "y": 14
+        }
+      ]
+    },
+    {
+      "name": "Tech Room",
+      "kind": "desk",
+      "capacity": 4,
+      "x": 30,
+      "y": 15,
+      "w": 12,
+      "h": 15,
+      "floor": "tech",
+      "doors": [
+        {
+          "x": 30,
+          "y": 20,
+          "h": 2
+        }
+      ],
+      "furniture": [
+        {
+          "object": "tv-film-studio#2",
+          "x": 3,
+          "y": 2
+        },
+        {
+          "object": "tv-film-studio#3",
+          "x": 2,
+          "y": 5
+        },
+        {
+          "object": "tv-film-studio#8",
+          "x": 6,
+          "y": 5
+        },
+        {
+          "object": "tv-film-studio#12",
+          "x": 9,
+          "y": 3
+        },
+        {
+          "object": "tv-film-studio#15",
+          "x": 4,
+          "y": 9
+        },
+        {
+          "object": "generic#137",
+          "x": 5,
+          "y": 7
+        },
+        {
+          "object": "generic#43",
+          "x": 9,
+          "y": 11
+        }
+      ]
+    },
+    {
+      "name": "Standup Room",
+      "kind": "meeting",
+      "capacity": 10,
+      "x": 17,
+      "y": 13,
+      "w": 10,
+      "h": 12,
+      "walls": false,
+      "floor": "standup",
+      "furniture": [
+        {
+          "object": "generic#50",
+          "x": 3,
+          "y": 1,
+          "layer": "floor"
+        },
+        {
+          "object": "generic#19",
+          "x": 3,
+          "y": 4
+        },
+        {
+          "object": "generic#137",
+          "x": 1,
+          "y": 3
+        },
+        {
+          "object": "generic#138",
+          "x": 1,
+          "y": 6
+        },
+        {
+          "object": "generic#139",
+          "x": 8,
+          "y": 3
+        },
+        {
+          "object": "generic#140",
+          "x": 8,
+          "y": 6
+        },
+        {
+          "object": "generic#41",
+          "x": 0,
+          "y": 0
+        },
+        {
+          "object": "generic#43",
+          "x": 8,
+          "y": 9
+        }
+      ]
+    }
+  ],
+  "furniture": [
+    {
+      "object": "generic#41",
+      "x": 17,
+      "y": 9
+    },
+    {
+      "object": "generic#43",
+      "x": 26,
+      "y": 9
+    },
+    {
+      "object": "generic#41",
+      "x": 17,
+      "y": 27
+    },
+    {
+      "object": "generic#43",
+      "x": 26,
+      "y": 27
+    }
+  ]
+}
